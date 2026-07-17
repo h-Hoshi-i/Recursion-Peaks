@@ -17,9 +17,11 @@ def twoD_peak(a):
     print(true_mid)
 
     if true_mid < a[mid_h][mid_w - 1]:
-        a = [a for row in a]
-        return
-    if true_mid < a[mid_h][mid_w + 1]:
+        a = [a[:mid_w+1] for _ in a]
+        return twoD_peak(a)
+    elif true_mid < a[mid_h][mid_w + 1]:
+        a = [a[:mid_w+1] for _ in a]
+        return twoD_peak(a)
 
     
     return
