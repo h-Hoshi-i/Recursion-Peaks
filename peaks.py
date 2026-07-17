@@ -1,3 +1,11 @@
+#find a middle collum (j = m//2)
+#find global max on column j at (i,j).
+#compare (i, j-1), (i, j), (i, j+1)
+#pick left columns if (i, j-1) > (i, j) similarly for the right
+#if (i, j) >= (i, j-1) and (i, j+1) than (i,j) is a 2d peak
+#solve the new problem with half the number of columns
+#base case, if you have a single row or collumn, find the global max and your done.
+
 a = [
     [0,1,2,3,4,5,6,7,8],
     [0,1,2,3,4,5,6,7,8],
