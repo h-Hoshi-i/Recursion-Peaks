@@ -1,5 +1,3 @@
-array1 = [0,1,2,3,4,12,6,7,8]
-
 def straightforward_method(a) -> int | None:
     n=0
     for _ in range(len(array1)-1):
@@ -34,5 +32,6 @@ def divide_method(a) -> int:
 
 
 if __name__ == "__main__":
+    a = [0,1,2,3,4,12,6,7,8]
     #print(f"the first peak is numbner {array1[straightforward_method(array1)]} in possition {straightforward_method(array1)}")
-    print(f"a peak in array1 holds the value", divide_method(array1))
+    print(f"a peak in array1 holds the value", divide_method(a))
