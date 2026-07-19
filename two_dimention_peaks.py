@@ -28,17 +28,17 @@ def two_d_peak(a: list[list[int]]):
             print(one, two)
             print(a)
             if a[one][0] > a[two][1]:
-                return one, a[one][0]
+                return a[one][0]
             else:
-                return two, a[two][1]
+                return a[two][1]
         elif m == 1:
             one = my_max(a[0])
-            return one, a[0][one]
+            return a[0][one]
         else:
             return "Baka!... you uh.. it cant be an empty list baka, but its not like a care or anything..."
 
     else: j = m//2 #a middle column
-    
+    print(a)
     i = [row[j] for row in a]
     i = my_max(i) #global max on row
 
@@ -49,7 +49,7 @@ def two_d_peak(a: list[list[int]]):
         new = [row[j:] for row in a]
         return two_d_peak(new)
     else:
-        return (i, j)
+        return a[i][j]
 
 if __name__ == "__main__":
     a = [
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     [18,19,20,21,22,23,24,25,26],
     [35,34,33,32,31,30,29,28,27],
     [36,37,38,39,40,41,42,43,44],
-    [53,52,51,50,49,48,47,46,45],
+    [42,999,49,48,47,46,45,44],
     ]
     print(two_d_peak(a))
