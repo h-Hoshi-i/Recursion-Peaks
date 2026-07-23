@@ -1,37 +1,70 @@
-def straightforward_method(a) -> int | None:
-    n=0
-    for _ in range(len(array1)-1):
-        #if possition n is >= possition n+1 than return n
-        if a[n] >= a[n+1]:
-            return n
-        else:
-            n += 1
-    return -1
+def my_max(col):
+    x = 0
+    m = col[0]
+    for n in range(1,len(col)):
+        if col[n] > m:
+            x = n
+            m = col[x]
+    return x
 
-def divide_method(a) -> int:
-    #base case
-    print(a)
-    if len(a) <= 2:
+def two_d_peak(a: list[list[int]]):
+    if len(a) <= 1:
         if len(a) == 0:
-            return None
-        if len(a) == 1:
-            return a[0]
-        if a[0] > a[1]:
-            return a[0]
+            return "baka... "
         else:
-            return a[1]
-    #recursion
-    mid = len(a)//2
-    if a[mid] < a[mid - 1]:
-        return divide_method(a[:mid])
-    elif a[mid] < a[mid + 1]:
-        return divide_method(a[mid + 1:])
-    else: 
-        return a[mid]
+            new = my_max(a[0])
+            return new, a[0][new]
 
+    m = len(a[0])
 
+    if m <= 3:
+        if m == 3:
+            j = 1
+        elif m == 2:
+            column_one = [row[0] for row in a]
+            column_two = [row[1] for row in a]
+            one = my_max(column_one)
+            two = my_max(column_two)
+            print(one, two)
+            print(a)
+            if a[one][0] > a[two][1]:
+                return a[one][0]
+            else:
+                return a[two][1]
+        elif m == 1:
+            new = [row[0] for row in a]
+            one = my_max(new)
+            return a[one]
+        else:
+            return "Baka!... you uh.. it cant be an empty list baka, but its not like a care or anything..."
+
+    else: j = m//2 #a middle column
+    print(a)
+    i = [row[j] for row in a]
+    i = my_max(i) #global max on row
+
+    if a[i][j-1] > a[i][j]:
+        new = [row[:j] for row in a]
+        return two_d_peak(new)
+    if a[i][j+1] > a[i][j]:
+        new = [row[j:] for row in a]
+        return two_d_peak(new)
+    else:
+        return a[i][j]
 
 if __name__ == "__main__":
-    a = [0,1,2,3,4,12,6,7,8]
-    #print(f"the first peak is numbner {array1[straightforward_method(array1)]} in possition {straightforward_method(array1)}")
-    print(f"a peak in array1 holds the value", divide_method(a))
+    a = [
+    [0,1,2,3,4,5,6,7,8],
+    [17,16,15,14,13,12,11,10,9],
+    [18,19,20,21,22,23,24,25,26],
+    [35,34,33,32,31,30,29,28,27],
+    [36,37,38,39,40,41,42,43,44],
+    [42,999,49,48,47,46,45,44],
+    ]
+    b = [
+    [1],
+    [2],
+    [3],
+    [4],
+    ]
+    print(two_d_peak(b))
